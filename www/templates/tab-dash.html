@@ -1,0 +1,35 @@
+<ion-view view-title="Experience TT">
+  <ion-content >
+    
+
+    <ion-slide-box on-slide-change="slideHasChanged($index)" auto-play="true" does-continue="true">
+		<ion-slide ng-repeat="i in items">
+			<img ng-src="{{i.src}}">
+		</ion-slide>
+	</ion-slide-box>
+
+    <div class="card list">
+	    <div class="item item-image">
+	      	<img  src="img/pigeonPoint.jpg" >
+	   </div>
+	   <div class="item item-divider">
+	      Recommended Activites will Appear In this Page. A Slide Screen of Recommended Activites Will be shown here
+	   </div>
+	    
+	    <div class="item item-image">
+	      	<img  src="img/bar.jpg" >
+	   </div>
+	   <div class="item item-divider">
+	      Specfic Event / Activties Will Appear Below. For Example a Recommended NightLife Activity such as visiting and Advertised Bar or club.    
+	   </div>
+   		
+   		 <div class="item item-image">
+	      	<img  src="img/pigeonPoint.jpg" >
+	   </div>
+	   <div class="item item-divider">
+	      Recommended Activites will Appear In this Page. A Slide Screen of Recommended Activites Will be shown here
+	   </div>
+
+  	</div>
+  </ion-content>
+</ion-view>

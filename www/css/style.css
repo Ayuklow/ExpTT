@@ -1,0 +1,37 @@
+/* Empty. Add your own CSS if you like */
+.background,.background .pane {
+    background-color: #31373A;
+}
+
+/*
+.background, .background .pane, .background .item, .background .item-complex .item-content{
+    background-color: #31373C ;
+}*/
+
+.item-divider{
+	margin-bottom: 10px;
+}
+
+.bar.bar-stable {
+  background-color: transparent;!important; /* or transparent, or background:none */
+}
+.scroll-content {
+  overflow: visible !important;
+}
+
+
+/*Dash slider*/
+.slider{
+	height:300px;
+	width: window.innerWidth;
+	
+
+}
+
+.slider-slide{
+	
+	background-color: #fff;
+	
+}
+
+
