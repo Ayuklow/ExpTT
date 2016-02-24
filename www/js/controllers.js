@@ -30,8 +30,14 @@ angular.module('starter.controllers', [])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-  $scope.chats = $firebaseArray(new Firebase('https://experiencett.firebaseio.com/experiences/daytt/hiking'));
-
+  $scope.chats = $firebaseArray(new Firebase('https://experiencett.firebaseio.com/experiences'));
+  $scope.test=function(){
+    for(var i=0;i<$scope.chats.length;i++)
+    {
+      console.log($scope.chats[i]);
+    }
+  };
+  
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };

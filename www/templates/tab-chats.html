@@ -1,14 +1,14 @@
 <ion-view view-title="Experience">
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.title}}">
-        <h1>{{chat.title}}<h1/>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.title}}" ng-init='test()'>
+        <h1>{{chat.$id}}<h1/>
 
         <h2>{{chat.activity}}</h2>
         <p>{{chat.category}}</p>
         <p>{{chat.desc}}</p>
         <p>{{chat.location}}</p>
-                <i class="icon ion-chevron-right icon-accessory"></i>
+        <i class="icon ion-chevron-right icon-accessory"></i>
         <ion-option-button class="button-assertive" ng-click="remove(chat)">
           Delete
         </ion-option-button>
