@@ -30,23 +30,74 @@ angular.module('starter.controllers', [])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-  $scope.chats = $firebaseArray(new Firebase('https://experiencett.firebaseio.com/experiences'));
-  $scope.test=function(){
+  $scope.chats = $firebaseArray(new Firebase('https://experiencett.firebaseio.com/menu'));
+  
+/*  $scope.test=function(){
     for(var i=0;i<$scope.chats.length;i++)
     {
       console.log($scope.chats[i]);
     }
-  };
-  
+  };*/
+
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
 })
 
+.controller('ChatDetailCtrl', function($scope, $stateParams,Chats,$firebaseArray) {
+  $scope.chats= $firebaseArray(new Firebase('https://experiencett.firebaseio.com/menu/'+$stateParams.chatId+'/activities'));
+  $scope.par=$stateParams.chatId;
+  $scope.test=function(){
+    for(var i=0;i<$scope.chats.length;i++)
+    {
+      
+        //$scope.chats.splice(i,1);
+        console.log($scope.chats[i]);
+      
+    }
+  };
+})
+
+.controller('ChatChooseCtrl', function($scope, $stateParams,Search,$firebaseArray,$state,$filter) {
+ /* console.log($state.current.name);
+  $scope.chats= $firebaseArray(new Firebase('https://experiencett.firebaseio.com/experiences/'+$stateParams.chatId+'/activities/'+$stateParams.chatId2+''));
+  $scope.par=$stateParams.chatId;
+  $scope.par2=$stateParams.chatId2;*/
+  /*$scope.title=$stateParams.cho;*/
+  $scope.chats=Search.all();
+  $scope.par1=$filter('lowercase')($stateParams.cat);
+  $scope.par2=$filter('lowercase')($stateParams.cho);
+  console.log($scope.par1);
+  console.log($scope.par2);
 
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+})
+
+.controller('DetailsCtrl',function($scope,$stateParams,Search,$state,$firebaseArray,$ionicHistory,$filter,$window){
+  /*var ref= new Firebase('https://experiencett.firebaseio.com/experiences/');
+   $scope.back=function(){
+     window.history.back();
+   };*/
+   //$scope.chats=Seach.all();
+   $scope.mheight=''+$window.innerHeight/2+'px';
+   console.log($scope.mheight);
+   var lower=$filter('lowercase')($stateParams.act);
+   console.log(lower);
+    $scope.chats= Search.get(lower);
+    $scope.test=function(){
+      for(var i=0;i<$scope.chats.length;i++)
+      {
+        
+          //$scope.chats.splice(i,1);
+          console.log($scope.chats[i]);
+        
+      }
+  };
+   
+})
+
+  .controller('SearchCtrl', function($scope) {
+   
 })
 
 .controller('AccountCtrl', function($scope) {

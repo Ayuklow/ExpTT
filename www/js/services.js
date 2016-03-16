@@ -1,10 +1,11 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
+.factory('Chats', function(/* */) {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var chats = [{
+ // var chats = $firebaseArray(new Firebase('https://experiencett.firebaseio.com/experiences'));
+ var chats = [{
     id: 0,
     name: 'Day TT',
     lastText: 'Experience The Sun of Daytime!',
@@ -31,7 +32,6 @@ angular.module('starter.services', [])
     face: 'img/mike.png'
   }];
 
-
   return {
     all: function() {
       return chats;
@@ -48,53 +48,32 @@ angular.module('starter.services', [])
       return null;
     }
   };
+})
+
+.factory('Search', function($firebaseArray) {
+  // Might use a resource here that returns a JSON array
+
+  // Some fake testing data
+ // var chats = $firebaseArray(new Firebase('https://experiencett.firebaseio.com/experiences'));
+ var chats =$firebaseArray(new Firebase('https://experiencett.firebaseio.com/experiences'));
+
+  return {
+    all: function() {
+      return chats;
+    },
+
+    remove: function(chat) {
+      chats.splice(chats.indexOf(chat), 1);
+    },
+    get: function(chatId) {
+      for (var i = 0; i < chats.length; i++) {
+        if (chats[i].$id === chatId) {
+          return chats[i];
+        }
+      }
+      return null;
+    }
+  };
 });
 
-/*
-.factory('Activity',function(){
 
-  var dayAct=[{
-    id: 0,
-    name: 'Beaches'
-  },{
-    id: 1,
-    name:'Landmarks'
-  },{
-    id: 2,
-    name:'Hiking'
-  },{
-    id: 3,
-    name:'Fitness'
-  }];
-
-  var nightAct=[{
-    id: 0,
-    name: 'Ariapita Avenue'
-  },{
-    id: 1,
-    name:'Bars'
-  },{
-    id: 2,
-    name:'Resturants'
-  },{
-    id: 3,
-    name:'Clubs'
-  }];
-
-  var carAct=[{
-    id: 0,
-    name: 'Beaches'
-  },{
-    id: 1,
-    name:'Landmarks'
-  },{
-    id: 2,
-    name:'Hiking'
-  },{
-    id: 3,
-    name:'Fitness'
-  }];
-
-
-
-});*/

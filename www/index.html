@@ -28,50 +28,9 @@
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
   </head>
+
   <body ng-app="starter">
-    <ion-side-menus>
-      <ion-side-menu-content>
-        <!--
-          The nav bar that will be updated as we navigate between views.
-        --> 
-        <ion-nav-bar class="bar-custom" >
-          <ion-nav-back-button>
-          </ion-nav-back-button>
-          <ion-nav-buttons side="left">
-            <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-            </button>
-          </ion-nav-buttons>
-        </ion-nav-bar>
-
-        
-        <!--
-          The views will be rendered in the <ion-nav-view> directive below
-          Templates are in the /templates folder (but you could also
-          have templates inline in this html file if you'd like).
-        -->
-        <ion-nav-view  class="background" animation="side-left"></ion-nav-view>
-       </ion-side-menu-content>
-
-       <ion-side-menu side="left">
-          <ion-header-bar class="bar-stable">
-            <h1 class="title">Profile</h1>
-          </ion-header-bar>
-          <ion-content>
-            <ion-list>
-              <ion-item menu-close href="#/app/search">
-                Profile 
-              </ion-item>
-              <ion-item menu-close href="#/app/browse">
-                Account
-              </ion-item>
-              <ion-item menu-close ng-click="logout()">
-                Sign-Out
-              </ion-item>
-            </ion-list>
-          </ion-content>
-        </ion-side-menu>
-        
-    </ion-side-menus>
+     <ion-nav-view  class="background" animation="side-left"></ion-nav-view>
     
   </body>
 </html>

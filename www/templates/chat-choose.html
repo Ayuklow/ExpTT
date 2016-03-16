@@ -3,19 +3,12 @@
   'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
-
-
 -->
-<ion-view view-title="{{$stateParams.chatId}}">
+<ion-view view-title="{{$stateparams.chatId}}">
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats"  type="item-text-wrap" href="#/tab/chats/{{par}}/{{chat.$value}}" ng-init='test()'>
-        <!-- <img ng-src="{{chat.img}}"> -->
-        <h2>{{chat.$value}}</h2>
-        <!-- <p>{{chat.desc}}</p> -->
-        <!-- <h2>{{chat.activity}}</h2>
-        <p>{{chat.category}}</p>
-        <p>{{chat.location}}</p> -->
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" ng-if="chat.category==par1&&chat.activity==par2" type="item-text-wrap" href="#/details/{{chat.$id}}" ng-init='test()'>
+        <h2>{{chat.title}}</h2>
         <i class="icon ion-chevron-right icon-accessory"></i>
         <ion-option-button class="button-assertive" ng-click="remove(chat)">
           Delete

@@ -36,13 +36,36 @@ angular.module('starter', ['ionic','firebase', 'starter.controllers', 'starter.s
   // Each state's controller can be found in controllers.js
   $stateProvider
 
+  .state('scaffold', {
+    abstract: true,
+    templateUrl: "templates/scaffold.html"
+    })
+
+    .state('details',{
+      url:'/details/:act',
+      parent:"scaffold",
+      templateUrl:'templates/details.html',
+      controller:'DetailsCtrl'   
+  })
+
+    .state('search',{
+      url:'/search/',
+      parent:"scaffold",
+      templateUrl:'templates/search.html',
+      controller:'SearchCtrl'   
+  })
+
+
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
+    parent:"scaffold",
     abstract: true,
     templateUrl: 'templates/tabs.html'
     
   })
+
+
 
   // Each tab has its own nav history stack:
 
@@ -75,6 +98,7 @@ angular.module('starter', ['ionic','firebase', 'starter.controllers', 'starter.s
         }
       }
     })
+
     .state('tab.chat-detail', {
       url: '/chats/:chatId',
       views: {
@@ -85,6 +109,17 @@ angular.module('starter', ['ionic','firebase', 'starter.controllers', 'starter.s
       }
     })
 
+    .state('tab.chat-choose', {
+      url: '/chats/:cat/:cho',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/chat-choose.html',
+          controller: 'ChatChooseCtrl'
+        }
+      }
+    })
+
+  
   .state('tab.account', {
     url: '/account',
     views: {
@@ -94,6 +129,8 @@ angular.module('starter', ['ionic','firebase', 'starter.controllers', 'starter.s
       }
     }
   });
+
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
