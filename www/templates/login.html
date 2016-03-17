@@ -3,50 +3,35 @@
 	<ion-content>
   		<div>
   			<form name="loginForm" >
+				
+				<div class="list">
+	  				
+	  				<label class="item item-input" >
+						<span class="input-label">Email</span>
+						<input type="email" ng-model="usr_email" required>
+					</label>
 
-		  		<label class="item item-input" >
-					<span class="input-label">EMAIL</span>
-					<input type="email" ng-model="usr_email" required>
-				</label>
+					<label class="item item-input">
+						<span class="input-label">Password</span>
+					    <input type="password" ng-model="usr_password" required>
+					</label>
+				
+					<div class="item">
+						<button class="button button-full button-balanced" ng-click="emailLogin(usr_email,usr_password)" ng-disabled="loginForm.$invalid">
+							LOG IN 
+						</button>
 
-				<label class="item item-input">
-				  	<span class="input-label">PASSWORD</span>
-				  	<input type="password" ng-model="usr_password" required>
-				</label>
+						<button class="button button-full button-balanced" ng-click="register(usr_email,usr_password)" ng-disabled="loginForm.$invalid">
+							REGISTER
+						</button>
 
-				<div class="item item-input">
-					<button class="item" ng-click="emailLogin(usr_email,usr_password)" ng-disabled="loginForm.$invalid">
-						LOG IN 
-					</button>
+						<button class="button button-full button-positive" ng-click="fblogin()">
+							LOG IN WITH FACEBOOK
+						</button>
+					</div>
 				</div>
-
-				<div class="item item-input" >		  
-					<button class="item item-input" ng-click="register(usr_email,usr_password)" ng-disabled="loginForm.$invalid">
-						REGISTER
-					</button>
-				</div>
-			</form>
-
-			<div class="item item-input" >
-				<button class="item" ng-click="fblogin()">
-					LOG IN WITH FACEBOOK
-				</button>
-			</div>
+			</form>	
 			
-			
-			
-			<!--
-			<div ng-hide = "authData" class="card" ng-click="logout()">		  
-				<button class="item">
-					LOGOUT
-				</button>
-			</div>
-			<div class="card" ng-show="authData">
-				<div class="item item-text-wrap">
-					Hello {{authData.facebook.displayName}}!
-				</div>
-			</div> 
-			-->
 		</div>	
 	</ion-content>
 </ion-view>

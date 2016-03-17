@@ -42,17 +42,18 @@ angular.module('starter', ['ionic','firebase', 'starter.controllers', 'starter.s
       controller: 'loginCtrl'
     })
 
-  .state('account', {
-      url: '/account',
-      templateUrl: 'templates/account.html',
-      controller: 'AccountCtrl'
-  })
-
   .state('scaffold', {
     abstract: true,
     templateUrl: "templates/scaffold.html",
     controller:'ScaffoldCtrl'   
     })
+
+  .state('account', {
+      url: '/account',
+      templateUrl: 'templates/account.html',
+      controller: 'AccountCtrl',
+      parent: 'scaffold'
+  })
 
   .state('details',{
       url:'/details/:act',
