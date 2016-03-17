@@ -101,7 +101,7 @@ angular.module('starter.controllers', ['firebase'])
 
 .controller('AccountCtrl', function($scope,$state) {
 
-  var ref = new Firebase("https//explogintest.firebaseio.com");
+  var ref = new Firebase("https://experiencett.firebaseio.com");
     
     $scope.logout=function(){
       ref.unauth();
@@ -116,7 +116,7 @@ angular.module('starter.controllers', ['firebase'])
 })
 
 .controller("ScaffoldCtrl",function($scope,$state){
-  var ref = new Firebase("https//explogintest.firebaseio.com");
+  var ref = new Firebase("https://experiencett.firebaseio.com");
     
     $scope.logout=function(){
       ref.unauth();
@@ -136,7 +136,7 @@ angular.module('starter.controllers', ['firebase'])
 
 .controller("loginCtrl",function($scope,$state,Auth){
 
-  var ref = new Firebase("https//explogintest.firebaseio.com");
+  var ref = new Firebase("https://experiencett.firebaseio.com");
 
   $scope.register=function(usr_email,usr_password){
     

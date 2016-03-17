@@ -77,7 +77,7 @@ angular.module('starter.services', [])
 })
 
 .factory("Auth", function($firebaseAuth){
-    var userRef = new Firebase("https//explogintest.firebaseio.com");
+    var userRef = new Firebase("https://experiencett.firebaseio.com");
     return $firebaseAuth(userRef);
 });
 
