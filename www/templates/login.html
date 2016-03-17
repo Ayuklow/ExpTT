@@ -1,0 +1,52 @@
+
+<ion-view view-title="Login">
+	<ion-content>
+  		<div>
+  			<form name="loginForm" >
+
+		  		<label class="item item-input" >
+					<span class="input-label">EMAIL</span>
+					<input type="email" ng-model="usr_email" required>
+				</label>
+
+				<label class="item item-input">
+				  	<span class="input-label">PASSWORD</span>
+				  	<input type="password" ng-model="usr_password" required>
+				</label>
+
+				<div class="item item-input">
+					<button class="item" ng-click="emailLogin(usr_email,usr_password)" ng-disabled="loginForm.$invalid">
+						LOG IN 
+					</button>
+				</div>
+
+				<div class="item item-input" >		  
+					<button class="item" ng-click="register(usr_email,usr_password)" ng-disabled="loginForm.$invalid">
+						REGISTER
+					</button>
+				</div>
+			</form>
+
+			<div class="item item-input" >
+				<button class="item" ng-click="fblogin()">
+					LOG IN WITH FACEBOOK
+				</button>
+			</div>
+			
+			
+			
+			<!--
+			<div ng-hide = "authData" class="card" ng-click="logout()">		  
+				<button class="item">
+					LOGOUT
+				</button>
+			</div>
+			<div class="card" ng-show="authData">
+				<div class="item item-text-wrap">
+					Hello {{authData.facebook.displayName}}!
+				</div>
+			</div> 
+			-->
+		</div>	
+	</ion-content>
+</ion-view>

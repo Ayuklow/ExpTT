@@ -1,11 +1,10 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function(/* */) {
+.factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
- // var chats = $firebaseArray(new Firebase('https://experiencett.firebaseio.com/experiences'));
- var chats = [{
+  var chats = [{
     id: 0,
     name: 'Day TT',
     lastText: 'Experience The Sun of Daytime!',
@@ -32,6 +31,7 @@ angular.module('starter.services', [])
     face: 'img/mike.png'
   }];
 
+
   return {
     all: function() {
       return chats;
@@ -41,7 +41,7 @@ angular.module('starter.services', [])
     },
     get: function(chatId) {
       for (var i = 0; i < chats.length; i++) {
-        if (chats[i].title === parseInt(chatId)) {
+        if (chats[i].id === parseInt(chatId)) {
           return chats[i];
         }
       }
@@ -74,6 +74,10 @@ angular.module('starter.services', [])
       return null;
     }
   };
-});
+})
 
+.factory("Auth", function($firebaseAuth){
+    var userRef = new Firebase("https//explogintest.firebaseio.com");
+    return $firebaseAuth(userRef);
+});
 

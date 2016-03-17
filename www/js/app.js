@@ -36,12 +36,19 @@ angular.module('starter', ['ionic','firebase', 'starter.controllers', 'starter.s
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-  .state('scaffold', {
-    abstract: true,
-    templateUrl: "templates/scaffold.html"
+  .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      controller: 'loginCtrl'
     })
 
-    .state('details',{
+  .state('scaffold', {
+    abstract: true,
+    templateUrl: "templates/scaffold.html",
+    controller:'ScaffoldCtrl'   
+    })
+
+  .state('details',{
       url:'/details/:act',
       parent:"scaffold",
       templateUrl:'templates/details.html',
@@ -55,9 +62,7 @@ angular.module('starter', ['ionic','firebase', 'starter.controllers', 'starter.s
       controller:'SearchCtrl'   
   })
 
-
-  // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('tab', {
     url: '/tab',
     parent:"scaffold",
     abstract: true,
@@ -130,9 +135,8 @@ angular.module('starter', ['ionic','firebase', 'starter.controllers', 'starter.s
     }
   });
 
-
-
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/login');
 
 });
+

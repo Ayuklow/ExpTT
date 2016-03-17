@@ -1,6 +1,4 @@
-angular.module('starter.controllers', [])
-
-
+angular.module('starter.controllers', ['firebase'])
 
 .controller('DashCtrl', function($scope) {
   $scope.items = [
@@ -22,7 +20,7 @@ angular.module('starter.controllers', [])
 
 .controller('HotCtrl',function($scope)  {})
 
-.controller('ChatsCtrl', function($scope, Chats, $firebaseArray) {
+.controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -30,6 +28,7 @@ angular.module('starter.controllers', [])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+
   $scope.chats = $firebaseArray(new Firebase('https://experiencett.firebaseio.com/menu'));
   
 /*  $scope.test=function(){
@@ -96,12 +95,112 @@ angular.module('starter.controllers', [])
    
 })
 
-  .controller('SearchCtrl', function($scope) {
+.controller('SearchCtrl', function($scope) {
    
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('AccountCtrl', function($scope,$state) {
+
+  var ref = new Firebase("https//explogintest.firebaseio.com");
+    
+    $scope.logout=function(){
+      ref.unauth();
+
+      console.log("Loggin out");
+      $state.go('login');
+    }
+    
   $scope.settings = {
     enableFriends: true
+  };
+})
+
+.controller("ScaffoldCtrl",function($scope,$state,Auth){
+  var ref = new Firebase("https//explogintest.firebaseio.com");
+    
+    $scope.logout=function(){
+      ref.unauth();
+      console.log("Loggin out");
+      $state.go('login');
+    };
+
+    $scope.navAccount=function(){
+       $state.go('tab.account');
+    }
+
+})
+
+.controller("loginCtrl",function($scope,$state,Auth){
+
+  var ref = new Firebase("https//explogintest.firebaseio.com");
+
+  $scope.register=function(usr_email,usr_password){
+    
+    ref.createUser({
+      email    : usr_email,
+      password : usr_password
+    }, function(error, userData) {
+      if (error) {
+        console.log("Error creating user:", error);
+      } else {
+        console.log("Successfully created user account with uid:", userData.uid);
+        $scope.emailLogin(usr_email,usr_password);
+      }
+    });
+  }
+
+  $scope.emailLogin= (function(usr_email,usr_password){
+    ref.authWithPassword({
+      email    : usr_email,
+      password : usr_password
+    }, function(error, authData) {
+      if (error) {
+        console.log("Login Failed!", error);
+      } 
+      else {
+        console.log("Authenticated successfully with payload:", authData);
+        $state.go('tab.dash');
+      }
+    });
+  })
+  
+  $scope.fblogin = function(){
+	 
+	 Auth.$authWithOAuthRedirect("facebook").then(function(authData){ 
+      //Succesful login 
+      //user successfully logged in 
+      //can log to the console since we are using a pop up
+
+      console.log("authWithOAuthRedirect Login : "+authData);
+      $state.go('tab.dash');   
+
+      }).catch(function(error){
+        if (error.code === "TRANSPORT_UNAVAILABLE") {
+          Auth.$authWithOAuthPopup("facebook").then(function(authData){ 
+          
+          //Succesful login 
+          console.log("authWithOAuthPopup Login: "+authData);
+          $state.go('tab.dash'); 
+
+          }).catch(function(error){     
+            //another error occured
+            console.log("error: " +error);
+          })
+        }
+      })
+       
+    Auth.$onAuth(function(authData){
+        if(authData === null){
+          console.log("Not logged in yet");
+          $state.go('login');
+        }
+        else{
+          console.log("logged in as",authData.uid);
+          $state.go('tab.dash');
+        }
+        $scope.authData = authData; //Display the username in our view
+      }
+    );
+
   };
 });
