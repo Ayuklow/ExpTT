@@ -42,6 +42,12 @@ angular.module('starter', ['ionic','firebase', 'starter.controllers', 'starter.s
       controller: 'loginCtrl'
     })
 
+  .state('account', {
+      url: '/account',
+      templateUrl: 'templates/account.html',
+      controller: 'AccountCtrl'
+  })
+
   .state('scaffold', {
     abstract: true,
     templateUrl: "templates/scaffold.html",
@@ -55,7 +61,7 @@ angular.module('starter', ['ionic','firebase', 'starter.controllers', 'starter.s
       controller:'DetailsCtrl'   
   })
 
-    .state('search',{
+  .state('search',{
       url:'/search/',
       parent:"scaffold",
       templateUrl:'templates/search.html',
@@ -125,16 +131,19 @@ angular.module('starter', ['ionic','firebase', 'starter.controllers', 'starter.s
     })
 
   
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
-  });
+  // .state('tab.account', {
+  //   url: '/account',
+  //   views: {
+  //     'tab-account': {
+  //       templateUrl: 'templates/tab-account.html',
+  //       controller: 'AccountCtrl'
+  //     }
+  //   }
+  // }
 
+  // )
+
+  ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 

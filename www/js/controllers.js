@@ -115,19 +115,23 @@ angular.module('starter.controllers', ['firebase'])
   };
 })
 
-.controller("ScaffoldCtrl",function($scope,$state,Auth){
+.controller("ScaffoldCtrl",function($scope,$state){
   var ref = new Firebase("https//explogintest.firebaseio.com");
     
     $scope.logout=function(){
       ref.unauth();
       console.log("Loggin out");
       $state.go('login');
-    };
-
-    $scope.navAccount=function(){
-       $state.go('tab.account');
     }
 
+    $scope.navAccount=function(){
+       $state.go('account');
+    }
+
+    $scope.navHome=function(){
+       $state.go('tab.dash');
+    }    
+  ;
 })
 
 .controller("loginCtrl",function($scope,$state,Auth){
