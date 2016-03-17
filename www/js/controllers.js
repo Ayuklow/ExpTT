@@ -99,10 +99,12 @@ angular.module('starter.controllers', ['firebase'])
    
 })
 
-.controller('AccountCtrl', function($scope,$state) {
+.controller('AccountCtrl', function($scope,$state,userData) {
 
   var ref = new Firebase("https://experiencett.firebaseio.com");
-    
+
+  $scope.UserName=userData.getData();
+
     $scope.logout=function(){
       ref.unauth();
 
@@ -115,9 +117,11 @@ angular.module('starter.controllers', ['firebase'])
   };
 })
 
-.controller("ScaffoldCtrl",function($scope,$state){
+.controller("ScaffoldCtrl",function($scope,$state,userData){
   var ref = new Firebase("https://experiencett.firebaseio.com");
     
+    $scope.UserName=userData.getData();
+
     $scope.logout=function(){
       ref.unauth();
       console.log("Loggin out");
@@ -134,10 +138,9 @@ angular.module('starter.controllers', ['firebase'])
   ;
 })
 
-.controller("loginCtrl",function($scope,$state,Auth){
+.controller("loginCtrl",function($scope,$state,Auth,userData,$ionicPopup){
 
   var ref = new Firebase("https://experiencett.firebaseio.com");
-
   $scope.register=function(usr_email,usr_password){
     
     ref.createUser({
@@ -146,6 +149,10 @@ angular.module('starter.controllers', ['firebase'])
     }, function(error, userData) {
       if (error) {
         console.log("Error creating user:", error);
+         var alertPopup = $ionicPopup.alert({
+                title: 'Sign Up failed!',
+                template: 'User already exists'
+            });
       } else {
         console.log("Successfully created user account with uid:", userData.uid);
         $scope.emailLogin(usr_email,usr_password);
@@ -160,9 +167,20 @@ angular.module('starter.controllers', ['firebase'])
     }, function(error, authData) {
       if (error) {
         console.log("Login Failed!", error);
+         var alertPopup = $ionicPopup.alert({
+                title: 'Login failed!',
+                template: 'Please check your credentials!'
+            });
       } 
       else {
         console.log("Authenticated successfully with payload:", authData);
+        $scope.authData = authData;
+
+//REMEMBER TO INCLUDE IN FACEBOOK ONCE FB LOGIN IS UP
+        var email=authData.password.email;
+        email=email.substring(0, email.indexOf("@"));
+        userData.setData(email);
+
         $state.go('tab.dash');
       }
     });
@@ -176,20 +194,35 @@ angular.module('starter.controllers', ['firebase'])
       //can log to the console since we are using a pop up
 
       console.log("authWithOAuthRedirect Login : "+authData);
+      $scope.authData = authData;
       $state.go('tab.dash');   
 
-      }).catch(function(error){
+      })
+      .catch(function(error){
         if (error.code === "TRANSPORT_UNAVAILABLE") {
           Auth.$authWithOAuthPopup("facebook").then(function(authData){ 
           
-          //Succesful login 
-          console.log("authWithOAuthPopup Login: "+authData);
-          $state.go('tab.dash'); 
+              //Succesful login 
+              console.log("authWithOAuthPopup Login: "+authData);
+              $scope.authData = authData;
+              $state.go('tab.dash'); 
 
-          }).catch(function(error){     
+          })
+          .catch(function(error){     
             //another error occured
             console.log("error: " +error);
+
+            var alertPopup = $ionicPopup.alert({
+                title: 'Facebook Login failed!',
+                template: 'Please retry or try email/pasword login!'
+            });
           })
+        }
+        else{  
+            var alertPopup = $ionicPopup.alert({
+                title: 'Facebook Login failed!',
+                template: 'Please retry or try email/pasword login!'
+            });
         }
       })
        
@@ -199,10 +232,10 @@ angular.module('starter.controllers', ['firebase'])
           $state.go('login');
         }
         else{
-          console.log("logged in as",authData.uid);
+          console.log("Logged in as "); console.log(authData);
           $state.go('tab.dash');
         }
-        $scope.authData = authData; //Display the username in our view
+        $scope.authdata = authData; //Display the username in our view
       }
     );
 

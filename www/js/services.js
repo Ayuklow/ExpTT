@@ -79,5 +79,25 @@ angular.module('starter.services', [])
 .factory("Auth", function($firebaseAuth){
     var userRef = new Firebase("https://experiencett.firebaseio.com");
     return $firebaseAuth(userRef);
-});
+})
+
+.service('userData', function() {
+
+    var username;
+
+    var setData = function (newData) {
+        username = newData;
+    }
+
+    var getData = function () {
+        return username;
+    }
+
+    return {
+        setData: setData,
+        getData: getData
+    };
+})
+
+;
 
