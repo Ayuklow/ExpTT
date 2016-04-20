@@ -3917,12 +3917,12 @@ a.subdued {
       background: transparent; }
 
    .bar.bar-custom {
-    border-color: #ddd;
+    border-color: white;
     background-color: white;
-    background-image: linear-gradient(0deg, #ddd, #ddd 50%, transparent 50%);
-    color: #444; }
+    background-image: white;
+    color: white; }
     .bar.bar-custom .title {
-      color: #444; }
+      color:#009688; }
     .bar.bar-custom.bar-footer {
       background-image: linear-gradient(180deg, #ddd, #ddd 50%, transparent 50%); }
          
@@ -4105,6 +4105,26 @@ a.subdued {
 .platform-android .bar .title {
   font-size: 19px;
   line-height: 44px; }
+
+.bar-custom .button {
+  border-color: transparent;
+  background-color: white;
+  color: white; }
+  .bar-custom .button:hover {
+    color: #444;
+    text-decoration: none; }
+  .bar-custom .button.active, .bar-custom .button.activated {
+    background-color: #fafafa; }
+  .bar-custom .button.button-clear {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    color: white;
+    font-size: 17px; }
+  .bar-custom .button.button-icon {
+    border-color: transparent;
+    background: none; }
+
 
 .bar-light .button {
   border-color: transparent;
@@ -4376,6 +4396,19 @@ a.subdued {
       background-repeat: no-repeat; } }
 
 /* Allow parent element of tabs to define color, or just the tab itself */
+
+./*tabs-custom > .tabs,
+.tabs.tabs-custom {
+  border-color: red;
+  background-color: red;
+  background-image: linear-gradient(0deg, #ddd, #ddd 50%, transparent 50%);
+  color: red; }
+  .tabs-custom > .tabs .tab-item .badge,
+  .tabs.tabs-custom .tab-item .badge {
+    background-color: red;
+    color: #fff; }*/
+
+
 .tabs-light > .tabs,
 .tabs.tabs-light {
   border-color: #ddd;
@@ -4817,9 +4850,9 @@ a.subdued {
 
 .tabs-background-custom .tabs,
 .tabs-background-custom > .tabs {
-  background-color: #ffffff;
+  background-color: white;
   background-image: linear-gradient(0deg, #ddd, #ddd 50%, transparent 50%);
-  border-color: #ddd; }      
+  border-color: #B2EBF2; }      
 
 .tabs-background-light .tabs,
 .tabs-background-light > .tabs {
@@ -4874,6 +4907,17 @@ a.subdued {
   background-color: #444;
   background-image: linear-gradient(0deg, #111, #111 50%, transparent 50%);
   border-color: #111; }
+
+.tabs-color-custom .tab-item {
+  color: #FFF;
+  opacity: 1; }
+  .tabs-color-custom .tab-item .badge {
+    opacity: 1; }
+  .tabs-color-custom .tab-item.tab-item-active, .tabs-color-custom .tab-item.active, .tabs-color-custom .tab-item.activated {
+    color: #FFC107;
+    border: 0 solid #fff; }
+    .tabs-color-custom .tab-item.tab-item-active .badge, .tabs-color-custom .tab-item.active .badge, .tabs-color-custom .tab-item.activated .badge {
+      opacity: 1; }  
 
 .tabs-color-light .tab-item {
   color: rgba(255, 255, 255, 0.4);
@@ -4975,10 +5019,9 @@ a.subdued {
       opacity: 1; }
 
  ion-tabs.tabs-color-active-custom .tab-item {
-  color: #2c3e50; }
+  color: #1C1F25;; }
   ion-tabs.tabs-color-active-custom .tab-item.tab-item-active, ion-tabs.tabs-color-active-custom .tab-item.active, ion-tabs.tabs-color-active-custom .tab-item.activated {
-    color: #E67E24
-    ; }
+    color: #009688; }
 
 ion-tabs.tabs-color-active-light .tab-item {
   color: #444; }
@@ -5170,6 +5213,11 @@ ion-tabs.tabs-color-active-dark .tab-item {
 .tab-item.active,
 .tab-item.activated {
   opacity: 1; }
+   /*.tab-item.tab-item-active.tab-item-custom,
+  .tab-item.active.tab-item-custom,
+  .tab-item.activated.tab-item-custom {
+    color: red; }*/
+  .tab-item.tab-item-active.tab-it
   .tab-item.tab-item-active.tab-item-light,
   .tab-item.active.tab-item-light,
   .tab-item.activated.tab-item-light {
@@ -9089,6 +9137,8 @@ a.button {
   align-self: center; }
 
 /* Column Offsets */
+.col-offset-5 {
+  margin-left: 3%; }
 .col-offset-10 {
   margin-left: 10%; }
 

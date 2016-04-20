@@ -1,3 +1,4 @@
+
 <!--
   This template loads for the 'tab.friend-detail' state (app.js)
   'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
@@ -6,15 +7,12 @@
 -->
 <ion-view view-title="{{$stateparams.chatId}}">
   <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" ng-if="chat.category==par1&&chat.activity==par2" type="item-text-wrap" href="#/details/{{chat.$id}}" ng-init='test()'>
+    
+      <ion-item  id="exp-choose" class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" ng-if="chat.category==par1&&chat.activity==par2" type="item-text-wrap" href="#/details/{{chat.$id}}" ng-init='test()'>
         <h2>{{chat.title}}</h2>
         <i class="icon ion-chevron-right icon-accessory"></i>
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
       </ion-item>
-    </ion-list>
+   
   </ion-content>
 </ion-view>
 

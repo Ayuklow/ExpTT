@@ -1,19 +1,13 @@
-<ion-view view-title="Experience">
+<ion-view view-title="ExperienceTT">
   <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.$id}}" ng-init='test()'>
-        <img ng-src="{{chat.img}}">
-        <h2>{{chat.title}}</h2>
-        <p>{{chat.desc}}</p>
-        <!-- <h2>{{chat.activity}}</h2>
-        <p>{{chat.category}}</p>
+    
+      <ion-item id="exp" ng-repeat="chat in chats" ng-style="{'background-image':'url({{chat.img}})'}" class="item-remove-animate item-icon-right" type="item-text-wrap" href="#/tab/chats/{{chat.$id}}">
         
-        <p>{{chat.location}}</p> -->
-        <i class="icon ion-chevron-right icon-accessory"></i>
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
+          <!-- <img ng-src="{{chat.img}}"> -->
+          <h2>{{chat.title}}</h2>
+          <p>{{chat.desc}}</p>
+          <i class="icon ion-chevron-right icon-accessory"></i> 
       </ion-item>
-    </ion-list>
+    
   </ion-content>
 </ion-view>

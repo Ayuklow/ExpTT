@@ -5,15 +5,33 @@
   The Friends service returns an array of friend data
 -->
 <ion-view view-title="{{$stateParams.chatId}}">
-  <ion-content>
+  <ion-content style="background-color: white;">   
+    <div>
       <div class="item item-image" ng-style="{'max-height':mheight}" >
-          <img  src="{{chats.img}}" >
-          
+          <img  ng-src="{{chats.img}}" >    
      </div>
-     <div>
+     <div class="detail-body" ng-class="{show:show}">
+          <h2>{{chats.title}}</h2>
+          <hr>
           <p>{{chats.desc}}</p>
+          <br>
+          <p>{{chats.desc2}}</p>
      </div>
+     <a class="col col-33 col-offset-67" id="hide" ng-click="show = true">Read More</a>
+     
+     
+   </div> 
   </ion-content>
+
+  <ion-footer-bar align-title="center" class="bar-clear" style="background-color:#009688">
+    <div class="buttons">
+      <button class="button button-clear icon-left ion-home" ng-click="home()" style="font-size:14px;">Home</button>
+    </div>
+    <h1 class="title"></h1>
+    <div class="buttons" ng-click="addFav()">
+      <button class="button button-clear icon-left ion-star" style="font-size:14px;">Add To Favourites</button>
+    </div>
+  </ion-footer-bar>
 </ion-view>
 
 

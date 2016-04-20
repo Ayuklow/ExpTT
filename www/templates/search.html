@@ -1,22 +1,20 @@
 
 <ion-view view-title="{{$stateParams.chatId}}">
-   <ion-content>
-    <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)"></ion-searchbar>
-<!--     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/details/{{chat.$id}}" ng-init='test()'>
-        <img ng-src="{{chat.img}}">
-        <h2>{{chat.title}}</h2>
-        <p>{{chat.desc}}</p>
-        <h2>{{chat.activity}}</h2>
-        <p>{{chat.category}}</p>
-        
-        <p>{{chat.location}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list> -->
+   <ion-content> 
+    <div class="bar bar-header item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="Search"ng-model="val">
+      </label>
+    </div>
+
+     <ion-list>
+        <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats | filter:val" type="item-text-wrap" href="#/details/{{chat.$id}}" ng-init='test()'>
+          <img ng-src="{{chat.img}}">
+          <h2>{{chat.title}}</h2>
+          <p>{{chat.location}}</p>
+        </ion-item>
+      </ion-list>
   </ion-content>
 </ion-view>
 

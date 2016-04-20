@@ -1,0 +1,34 @@
+
+<ion-view view-title="Register">
+	<ion-content style="background-image:url('img/bg2.jpg');">
+		<div id="logo">
+			<img src="img/logo.png" >
+			<h1>ExperienceTT</h1>
+		</div>
+		<div id="list">
+	  		<div>
+	  			<label class="item item-input">
+					<i class="icon ion- placeholder-icon"></i>
+					<input type="text" placeholder="Username" ng-model="reg_username" id="reg_username"required>
+				</label>
+				<br/>
+		  		<label class="item item-input">
+					<i class="icon ion-email placeholder-icon"></i>
+					<input type="email" placeholder="Email" ng-model="reg_email" id="reg_email" required>
+				</label>
+				<br/>
+				<label class="item item-input">
+					<i class="icon ion-locked placeholder-icon"></i>
+					<input type="password" placeholder="Password" ng-model="reg_password" id="reg_password" required>
+				</label>					
+			</div>	
+					
+			<div class="button-menu" >
+				<button class="button button-full button-light" ng-click="register(reg_email,reg_password,reg_username)" ng-disabled="loginForm.$invalid">
+					REGISTER
+				</button>
+			</div>
+		</div>
+	</ion-content>
+	
+</ion-view>

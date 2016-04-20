@@ -1,15 +1,35 @@
-<ion-view view-title="Whats Hot">
-  <ion-content class="padding">
-    <h2>Welcome to Whats Hot</h2>
-    <p>
-      Slide of Upcoming Events 
-    </p>
-    <p>
-      Advertisted Specfic Event / Activties Will Appear Below. For Example visiting and Advertised Bar or club.
-    </p>
-    <p>
-      Possibly a calander of upcoming events.
-    </p>
+<ion-view view-title="D'Vibes">
+  <ion-content> 
+        <div class="item item-divider" id="favDivider">
+            Sponsored Area
+        </div>
+
+          <ion-slide-box on-slide-change="slideHasChanged($index)"  auto-play="true" does-continue="true">
+            <ion-slide ng-repeat="i in items ">
+              <img ng-src="{{i.src}}">
+            </ion-slide>
+          </ion-slide-box>
+
+       <div class="item item-divider" id="favDivider">
+         Upcoming Events
+      </div>
+
+      <div class="padding">
+
+        <div class="list card" type="item-text-wrap" ng-repeat="place in places|limitTo:4" >
+        
+            <div class="item item-image" >
+                <img ng-src="{{place.cover.source}}"  >
+            </div>
+        </a>
+            <div class="item item-text" id="card-det" style="background-color:#D97F34">
+                <strong > {{place.owner.name}} </strong>
+                <p> {{place.description}} </p>
+            </div>
+        
+      </div>
+      <br/>
+    </div>
     
   </ion-content>
 </ion-view>

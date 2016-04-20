@@ -1,24 +1,26 @@
-/* Empty. Add your own CSS if you like */
+/* Whole App */
 .background,.background .pane {
-    background-color: #31373A;
-}
+   /* background-color: #31373A;*/
+   /*background-color: #1abc9c;*/
 
-/*
-.background, .background .pane, .background .item, .background .item-complex .item-content{
-    background-color: #31373C ;
-}*/
+}
+.custom-icon
+{
+    color: #009688;
+}
 
 .item-divider{
 	margin-bottom: 10px;
 }
 
-.bar.bar-stable {
-  background-color: transparent;!important; /* or transparent, or background:none */
-}
 .scroll-content {
   overflow: visible !important;
 }
-
+.pad 
+{
+    padding: 10px;
+}
+/*END Whole APP*/
 
 /*Dash slider*/
 .slider{
@@ -33,11 +35,80 @@
 	background-color: #fff;
 	
 }
+/*Contact Us*/
+#contact
+{
+    text-align:center;
+    padding-top:10%;
 
+}
+
+#contact >img
+{
+    width:30%;
+    height:30%;
+}
+#contact h3 ,#contact h1
+{
+    color:#009688;
+}
+
+/*Account*/
+#accImg
+{
+    padding-left: 10px;
+}
+
+#accImg img
+{
+    border-radius: 50%;
+    border: 2px solid white;
+    width:60%;
+    height: 60%;
+}
+
+#accImg h3
+{
+    color: white;
+    font-size: 22px;
+}
+
+#accImg h4
+{
+    color: white;
+    font-size: 16px;
+}
+
+#accBtn
+{
+    border:1px solid white;
+    border-radius: 15px;
+    color: white;
+}
+#accDet p
+{
+    text-align: center;
+    color: white;
+}
+
+#accDet i
+{
+    color: red;
+}
+/*END Account*/
+/*Preferences*/
+#prefDivider
+{
+    background-color: blue;
+    color:white;
+}
+/*End Preferences*/
+
+/*SIDE MENU*/
 
 .bar.bar-profile {
-    background-color: #444;
-    height: 170px;
+    background-color:#1C1F25;
+    height:200px;
 }
 
 .bar .profile {
@@ -65,7 +136,8 @@
 
 .menu .has-header
 {
-    top: 169px;
+    background-color: #1C1F25;
+    top: 200px;
 }
 
 /*Profile styling*/
@@ -78,11 +150,12 @@
         text-align: center;
       }
       #profile-name {
-        color: #ffffcc;
+        color: #000000;
         font-size: 26px;
       }
 
-#profile-image {
+#profile-image 
+{
         display: block;
         border-radius: 100px;
         border: 1px solid #fff;
@@ -90,4 +163,198 @@
         height: 128px;
         margin: 30px auto 0;
         box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
-      }
+}
+
+#scafflist .item
+{
+    background-color: #1C1F25;
+    color: white;
+}
+
+#card-det ,strong
+{
+    font-size: 18px;
+    color: white;
+}
+
+#card-det p
+{
+    color: white;
+}
+
+
+/*EXPERIENCE DETAILS*/
+.detail-body
+{
+    overflow: hidden;
+    width:100%;
+    height:300px;
+    min-height: 50px;
+    text-align: justify;
+    padding:10%;
+    background-color: white;
+}
+
+.show 
+{
+    overflow: visible;
+    height: auto;
+}
+.detail-body>h2
+{
+    text-align: left;
+    color:      #37BBB0;
+}
+.detail-body>p 
+{
+    color:  #2c3e50;
+    font-size: 15px;
+}
+
+#hide 
+{
+    color: #37BBB0;
+    text-align: center;
+    font-size: 15px
+}
+/*END Detail*/
+/*LOGIN*/
+
+#logo
+{
+    text-align:center;
+    padding-top:10%;
+}
+
+#logo >img
+{
+    width:30%;
+    height:30%;
+}
+
+#logo >h1, #logo>h3 
+{
+    color:white;
+}
+
+#list
+{
+    padding:14%;
+    text-align: center
+}
+
+#list> div>label
+{
+    background-color:black; 
+    opacity: 0.8;
+
+}
+
+#list> div>label>input
+{
+    color:#009688;;
+}
+
+#list>div>button
+{
+    border-radius:15px;
+}
+
+#list>div>h3
+{
+    color: white;
+}
+
+#log-foot 
+{
+    position:fixed;
+    bottom:0;
+    background-color: transparent;
+}
+#log-foot>div
+{
+    color: white;
+}
+/*END*/
+/*weather*/
+#weather
+{
+    background-color:#153A64;
+    padding:10px;
+    text-align:left
+}
+
+#weather h1 
+{
+    color:white;
+    text-align: right;
+    font-size: 80px;
+}
+
+#weather h3
+{
+    color: white;
+
+}
+
+#weather img
+{
+    padding-top: 23px;
+    width:30%;
+    height:30%;
+}
+/*END*/
+/*tab.chats*/
+#exp
+{
+    line-height: 50px;
+}
+#exp h2 ,#exp p
+{
+    color: white;
+}
+.item .item-content {
+  background-color: transparent !important;
+}
+
+.item-content {
+  background-color:#FFFFFF;
+}
+/*END tab.chats*/
+/*chat.choose && chat detail*/
+#exp-choose
+{
+    background-color: #009688;
+}
+#exp-choose h2
+{
+    color: white;
+}
+
+/*END*/
+/*Favourites*/
+#favStyle 
+{
+    height: 100px;
+    background-color: #31373A;
+}
+
+#nameTag ,#nameTag h2 
+{
+    background-color: #31373A;
+    color: #009688;
+    width:100px;
+    height: 70px;
+    text-align: center;
+    font-size: 20px;
+    vertical-align: middle;
+    border:1px solid ;
+
+}
+
+#favDivider
+{
+    text-align: center;
+    background-color:  #009688;
+}
+/*EndFavourites*/

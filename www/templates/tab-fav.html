@@ -1,0 +1,37 @@
+<ion-view view-title="Favourites">
+  <ion-content style="background-color:#009688">
+    <div >
+       <div class="row" >
+          <div class="col" id="accImg">
+              <img width="15%" height="15%"  ng-src="{{image}}" ng-click="upload()"/>
+              <h3 id="profile-name" ng-model="usrname">{{UserName}}</h3> 
+              <h4>Trinidad and Tobago</h4>
+          </div>
+          <div id="accDet"class="col">
+            <p>{{favCount}}<br>favs</p>
+            <button id="accBtn"class="button button-full button-clear" ng-click="navPreferences()">User Preferences</button>
+          </div>  
+        </div>
+        </br>
+        <div id="accDet">
+          <p>"Time to explore Trinidad and Tobago"</p>
+        </div>
+         <div class="item item-divider" id="favDivider">
+            Your Favourites
+        </div>
+    </div>
+    
+    <div id="favStyle">
+      <ion-list>
+       <ion-item  ng-repeat="fav in favs" ng-style="{'background-image':'url({{fav.img}})'}" class="item-remove-animate item-icon-right" type="item-text-wrap" ng-click="toDet(fav.name)">        
+            <div id="nameTag">
+                <h2>{{fav.name}}</h2>
+            </div>
+            
+            <i class="icon ion-chevron-right icon-accessory"></i> 
+            <ion-option-button class="button-assertive icon ion-trash-a" ng-click="delete(fav)"></ion-option-button>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
+</ion-view>

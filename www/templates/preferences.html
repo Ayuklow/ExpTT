@@ -1,0 +1,19 @@
+<ion-view view-title="Preferences">
+    <ion-content has-header="true">
+    	<div>
+	       <div class="item item-divider" id="favDivider">
+		    	Home Screen Settings
+		  </div>
+	      <div class="profile-prefs pad">
+	       		<p>What are you interested in? </p>
+
+	       		<ion-checkbox ng-repeat="pref in classList" ng-model="pref.selected" ng-checked="pref.selected">
+          			{{ pref.class }}
+        		</ion-checkbox>
+        		<button class="button button-full button-balanced" ng-click="save()">
+					SAVE 
+				</button>	       		
+	       </div>
+		</div>
+	</ion-content>
+</ion-view> 

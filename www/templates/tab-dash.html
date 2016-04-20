@@ -1,34 +1,39 @@
 <ion-view view-title="Experience TT">
-  <ion-content >
-    
-
-    <ion-slide-box on-slide-change="slideHasChanged($index)" auto-play="true" does-continue="true">
+  <ion-content>
+  <div>
+    <!-- <ion-slide-box on-slide-change="slideHasChanged($index)" 	auto-play="true" does-continue="true">
 		<ion-slide ng-repeat="i in items">
 			<img ng-src="{{i.src}}">
 		</ion-slide>
-	</ion-slide-box>
-
-    <div class="card list">
-	    <div class="item item-image">
-	      	<img  src="img/pigeonPoint.jpg" >
-	   </div>
-	   <div class="item item-divider">
-	      Recommended Activites will Appear In this Page. A Slide Screen of Recommended Activites Will be shown here
-	   </div>
-	    
-	    <div class="item item-image">
-	      	<img  src="img/bar.jpg" >
-	   </div>
-	   <div class="item item-divider">
-	      Specfic Event / Activties Will Appear Below. For Example a Recommended NightLife Activity such as visiting and Advertised Bar or club.    
-	   </div>
-   		
-   		 <div class="item item-image">
-	      	<img  src="img/pigeonPoint.jpg" >
-	   </div>
-	   <div class="item item-divider">
-	      Recommended Activites will Appear In this Page. A Slide Screen of Recommended Activites Will be shown here
-	   </div>
+     </ion-slide-box> -->
+    <div id="weather" style="background-image:url('img/blurr1.png')">
+    	<h3>Port of Spain, Trinidad</h3>
+    	<div class="row">
+    		<img ng-src="img/partcloud.png" >
+    		<h1 class="col">{{forecast.temp}}&deg</h1>
+    	</div>
+    		<h3>{{forecast.weather_text}}</h3>
+    </div>
+    <div>
+	    <div class="list card" type="item-text-wrap" ng-repeat="place in places|filter:val|limitTo:4" >
+		    <a href="#/details/{{place.$id}}">
+			    <div class="item item-image" >
+			      	<img ng-src="{{place.img}}"  >
+			   	</div>
+			</a>
+			   	<div class="item item-text" id="card-det" style="background-color:#009688">
+			   		<div class="row" >
+				      	<strong  class="col col-60"> {{place.title}} </strong>
+				      	<button class="button button-small button-outline button-light icon-left ion-star" side="right" ng-click="addFav(place.$id,place.img)">Add To Favourites</button>
+			      	</div>
+			      	<div class="row">
+			      		<p class="col col-60">{{place.location}}</p>
+			      	</div>		 
+			   	</div>
+			
+		</div>
+		<br/>
+  	</div>
 
   	</div>
   </ion-content>

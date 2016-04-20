@@ -1,37 +1,42 @@
 
 <ion-view view-title="Login">
-	<ion-content>
-  		<div>
-  			<form name="loginForm" >
-				
-				<div class="list">
-	  				
-	  				<label class="item item-input" >
-						<span class="input-label">Email</span>
-						<input type="email" ng-model="usr_email" required>
-					</label>
+	<ion-content style="background-image:url('img/bg2.jpg');">
+		<div id="logo">
+			<img src="img/logo.png" >
+			<h1>ExperienceTT</h1>
+		</div>
+		<div id="list">
+	  		<div>
+		  		<label class="item item-input">
+					<i class="icon ion-email placeholder-icon custom-icon"></i>
+					<input type="email" placeholder="Email" ng-model="usr_email" id="usr_email" required>
+				</label>
+				<br/>
+				<label class="item item-input">
+					<i class="icon ion-locked placeholder-icon custom-icon"></i>
+					<input type="password" placeholder="Password" ng-model="usr_password" id="usr_password" required>
+				</label>					
+			</div>	
+					
+			<div class="button-menu" >
+				<button class="button button-full button-balanced " ng-click="emailLogin(usr_email,usr_password)" ng-disabled="loginForm.$invalid">
+					LOG IN 
+				</button>
+			</div>
+			<div >
+				<h3><i class="icon ion-minus-round "></i> or <i class="icon ion-minus-round "></i></h3>
+			</div>
+			<div>
+				<button class="button button-full button-positive" ng-click="fblogin()">
+					<i class="icon ion-social-facebook placeholder-icon"></i>
+					LOG IN WITH FACEBOOK
+				</button>
+			</div>	
 
-					<label class="item item-input">
-						<span class="input-label">Password</span>
-					    <input type="password" ng-model="usr_password" required>
-					</label>
-				
-					<div class="item">
-						<button class="button button-full button-balanced" ng-click="emailLogin(usr_email,usr_password)" ng-disabled="loginForm.$invalid">
-							LOG IN 
-						</button>
-
-						<button class="button button-full button-balanced" ng-click="register(usr_email,usr_password)" ng-disabled="loginForm.$invalid">
-							REGISTER
-						</button>
-
-						<button class="button button-full button-positive" ng-click="fblogin()">
-							LOG IN WITH FACEBOOK
-						</button>
-					</div>
-				</div>
-			</form>	
-			
-		</div>	
+		</div>
+		<div class="bar bar-footer" id="log-foot">
+		  <div class="title" ng-click="navRegister()" >New Here? Sign Up</div>
+		</div>
 	</ion-content>
+	
 </ion-view>

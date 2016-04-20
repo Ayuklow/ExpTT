@@ -1,11 +1,22 @@
-
 <ion-view view-title="Account">
-	<ion-content>
     	<ion-content has-header="true">
-	      <div id="profile-bg"></div>
-	      <div id="content">
-	        <div id="profile-info">
-	          <img id="profile-image" src="img/Bob.png"> <!--change so that users can upload their profile pic-->
-	         <h3 id="profile-name" ng-model="usrname">{{UserName}}</h3> 
-	  </ion-content>
+	        <div style="background-color:#009688">
+	        	<div class="row" >
+	          		<div class="col" id="accImg">
+	          			<img width="15%" height="15%"  ng-src="{{image}}" ng-click="upload()"/>
+	          			<h3 id="profile-name" ng-model="usrname">{{UserName}}</h3> 
+	          			<h4>Trinidad and Tobago</h4>
+	          		</div>
+	          		<div id="accDet"class="col">
+						<p>{{favCount}}<br>favs</p>
+						<button id="accBtn"class="button button-full button-clear" ng-click="navPreferences()">User Preferences</button>
+	          		</div>	
+	          	</div>
+	           	</br>
+	         	</br>
+	         		<div id="accDet">
+	         			<p>"Time to explore Trinidad and Tobago"</p>
+	         		</div>		
+	        </div>
+	</ion-content>
 </ion-view>

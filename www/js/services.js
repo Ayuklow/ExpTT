@@ -1,44 +1,51 @@
+
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
-  // Might use a resource here that returns a JSON array
 
-  // Some fake testing data
-  var chats = [{
-    id: 0,
-    name: 'Day TT',
-    lastText: 'Experience The Sun of Daytime!',
-    face: 'img/ben.png'
-  }, {
-    id: 1,
-    name: 'Night TT',
-    lastText: 'Experience The Passion of the Night! ',
-    face: 'img/max.png'
-  }, {
-    id: 2,
-    name: 'Carnival TT',
-    lastText: 'The Greatest Show on Earth!',
-    face: 'img/adam.jpg'
-  }, {
-    id: 3,
-    name: 'Rent Experience',
-    lastText: 'Rent A House By the Seas!',
-    face: 'img/perry.png'
-  }, {
-    id: 4,
-    name: 'Transportation Services',
-    lastText: 'Let Us Take You Around.',
-    face: 'img/mike.png'
-  }];
+.factory('Favourites',function($firebaseArray){
 
+  var ref = new Firebase("https://experiencett.firebaseio.com/");
+  var authData = ref.getAuth();
+  var favlist = $firebaseArray(new Firebase('https://experiencett.firebaseio.com/favourites/'+authData.uid+''));
+  var userFav=new Firebase('https://experiencett.firebaseio.com/favourites/'+authData.uid);
+  var found=0;
 
   return {
     all: function() {
-      return chats;
+      return favlist;
     },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
+
+    getInfo:function(){
+      return authData;
     },
+
+    add: function(name,img){
+      var obj={"name":name,"img":img};
+      found=0;
+      angular.forEach(favlist,function(fav){
+        if(fav.name===obj.name){
+          found=1;
+        }
+      });
+      if(found==0){
+        userFav.push().set(obj);
+      }  
+    },
+
+    delete:function(obj){
+      favlist.$loaded().then(function() {
+        favlist.$remove(favlist.indexOf(obj)).then(function() {
+            console.log('item removed')
+        }).catch(function(error) {
+            console.log('error', error);
+        });
+      });
+    },
+
+    remove: function(fav) {
+      favs.splice(favs.indexOf(fav), 1);
+    },
+    
     get: function(chatId) {
       for (var i = 0; i < chats.length; i++) {
         if (chats[i].id === parseInt(chatId)) {
@@ -48,13 +55,11 @@ angular.module('starter.services', [])
       return null;
     }
   };
+
 })
 
 .factory('Search', function($firebaseArray) {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
- // var chats = $firebaseArray(new Firebase('https://experiencett.firebaseio.com/experiences'));
+  
  var chats =$firebaseArray(new Firebase('https://experiencett.firebaseio.com/experiences'));
 
   return {
@@ -81,23 +86,82 @@ angular.module('starter.services', [])
     return $firebaseAuth(userRef);
 })
 
-.service('userData', function() {
+.factory('userData', function() {
+  var ref = new Firebase("https://experiencett.firebaseio.com");
+  var users = new Firebase("https://experiencett.firebaseio.com/users");
+  var username; var userInfo; var AuthData;
 
-    var username;
-
-    var setData = function (newData) {
+  return {
+    //USER USERNAME
+    setName: function (newData) {
         username = newData;
-    }
+    },
 
-    var getData = function () {
+    getName: function () {
         return username;
-    }
+    },
 
-    return {
-        setData: setData,
-        getData: getData
-    };
+    //sets userinfo in this variable for retrieval
+    setUserInfo: function (newData) {
+        userInfo = newData;
+    },
+    //ALL USER INFO STORED IN FIREBASE
+    storeUserInfo: function (newData) {
+        userInfo = newData;//to ensure that both sets of data correlates may remove line if necessary
+        users.child((ref.getAuth()).uid).set(newData);
+    },
+    getUserInfo: function () {
+        return userInfo;
+    },
+
+    //AUTH DATA FROM WHEN A USER LOGS IN
+    storeAuthData: function(newData){
+      AuthData=newData;
+    },
+
+    getAuthData: function(){
+      return AuthData;
+    },
+
+    logout: function(){
+      AuthData=null;
+      username=null;
+      userInfo=null;
+    }
+  };
 })
 
+.factory('Preferences',function($firebaseArray){
+
+  var ref = new Firebase("https://experiencett.firebaseio.com/");
+  var authData = ref.getAuth();
+  var userPrefs = $firebaseArray(new Firebase('https://experiencett.firebaseio.com/preferences/'+authData.uid+''));
+  var ActivityList=$firebaseArray(new Firebase('https://experiencett.firebaseio.com/experiences'));
+  var preferencesList=[];
+
+  return {
+    preferencesList: function() {
+      angular.forEach(ActivityList,function(act){
+        var found=0;
+        angular.forEach(preferencesList,function(pref){
+          if(pref.class===act.class){
+            found=1;
+          }
+        });
+        if(found==0){
+          preferencesList.push({"class":act.class});
+        }  
+      });
+      return preferencesList;
+    },
+    all: function(){
+      return userPrefs;
+    },
+    add: function(val){
+      var up = new Firebase('https://experiencett.firebaseio.com/preferences/'+(ref.getAuth()).uid+'');
+      up.set(val);
+    }
+  };
+})
 ;
 

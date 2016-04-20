@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','firebase', 'starter.controllers', 'starter.services'])
+var expttApp=angular.module('starter', ['ionic','firebase', 'ngCordova', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -39,19 +39,43 @@ angular.module('starter', ['ionic','firebase', 'starter.controllers', 'starter.s
   .state('login', {
       url: '/login',
       templateUrl: 'templates/login.html',
-      controller: 'loginCtrl'
-    })
+      controller: 'loginCtrl',
+      cache: false
+  })
+
+  .state('register', {
+      url: '/register',
+      templateUrl: 'templates/register.html',
+      controller: 'loginCtrl',
+      cache: false
+  })
 
   .state('scaffold', {
-    abstract: true,
-    templateUrl: "templates/scaffold.html",
-    controller:'ScaffoldCtrl'   
-    })
+      abstract: true,
+      templateUrl: "templates/scaffold.html",
+      controller:'ScaffoldCtrl',
+      cache: false   
+  })
 
   .state('account', {
       url: '/account',
       templateUrl: 'templates/account.html',
       controller: 'AccountCtrl',
+      parent: 'scaffold',
+      cache: false
+  })
+  .state('preferences', {
+      url: '/preferences',
+      templateUrl: 'templates/preferences.html',
+      controller: 'PreferencesCtrl',
+      parent:'scaffold',
+      cache: false
+  })
+
+  .state('contact', {
+      url: '/contact',
+      templateUrl: 'templates/contact.html',
+      controller: 'ContactCtrl',
       parent: 'scaffold'
   })
 
@@ -66,14 +90,16 @@ angular.module('starter', ['ionic','firebase', 'starter.controllers', 'starter.s
       url:'/search/',
       parent:"scaffold",
       templateUrl:'templates/search.html',
-      controller:'SearchCtrl'   
+      controller:'SearchCtrl',
+      cache: false  
   })
 
   .state('tab', {
     url: '/tab',
     parent:"scaffold",
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/tabs.html',
+    cache: false
     
   })
 
@@ -97,6 +123,16 @@ angular.module('starter', ['ionic','firebase', 'starter.controllers', 'starter.s
       'tab-hot': {
         templateUrl: 'templates/tab-hot.html',
         controller: 'HotCtrl'
+      }
+    }
+  })
+
+  .state('tab.fav',{
+    url:'/fav',
+    views:{
+      'tab-fav':{
+        templateUrl:'templates/tab-fav.html',
+        controller: 'FavCtrl'
       }
     }
   })
@@ -130,19 +166,6 @@ angular.module('starter', ['ionic','firebase', 'starter.controllers', 'starter.s
         }
       }
     })
-
-  
-  // .state('tab.account', {
-  //   url: '/account',
-  //   views: {
-  //     'tab-account': {
-  //       templateUrl: 'templates/tab-account.html',
-  //       controller: 'AccountCtrl'
-  //     }
-  //   }
-  // }
-
-  // )
 
   ;
   // if none of the above states are matched, use this as the fallback
